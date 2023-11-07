@@ -3,66 +3,53 @@ import FeedbackOptions from "./FeedbackOptions";
 import Statistics from "./Statistics";
 import Notification from "./Notification/Notification";
 import Section from "./Section/Section";
+import { useState, useEffect } from "react";
 
 
 
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  }
+const App = () => {
 
-  // =====================================================================================================================
-  // custom method
-  handleIncrm = (option) => {
-    this.setState(preventState => ({
-      [option]: preventState[option] + 1,
-    }))
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const handleIncrm = (e) => {
+    if (e == "good") {
+      setGood(good + 1);
+    };
+    if (e == "neutral") {
+      setNeutral(neutral + 1);
+    };
+    if (e == "bad") {
+      setBad(bad + 1);
+    };
   };
 
-  // =================================================================================================================
-  // counting
-  countTotalFeedback = () => {
-    const total = Object.values(this.state);
-    return total.reduce((acc, vote) => vote + acc, 0);
-  };
-  
-  countPositiveFeedbackPercentage = (total) => {
-    const countPositive = Math.round((this.state.good / total) * 100);
-    return countPositive;
-  };
+  const total = good + neutral + bad;
+  const positive = Math.round((good / total) * 100);
 
-  // =====================================================================================================================
-  render() {
-    const total = this.countTotalFeedback();
-    const positive = this.countPositiveFeedbackPercentage(total);
+  return (
+    <>
+      <Section title="Please leave feedback">
+        <FeedbackOptions
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={handleIncrm}
+        />
+      </Section>
 
-    return (
-      <>
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
-            onLeaveFeedback={this.handleIncrm}
+      <Section title="Statistics">
+        {(total) !== 0 ?
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positive}
           />
-        </Section>
-
-        <Section title="Statistics">
-          {(total) !== 0 ?
-            <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={total}
-              positivePercentage={positive}
-            />
-            : <Notification message="There is no feedback"></Notification>}
-        </Section>
-      </>
-    );
-  };
-}
+          : <Notification message="There is no feedback"></Notification>}
+      </Section>
+    </>
+  );
+};
 
 export default App;
-
-
