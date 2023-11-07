@@ -1,0 +1,71 @@
+.wraper_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px 0;
+
+    width: 650px;
+
+    background: rgba(26, 44, 246, 0.607);
+    border: 2px solid rgb(140, 25, 228);
+    border-radius: 6px;
+    box-shadow: 1em 1em 1em .1em rgba(105, 97, 94, 0.268);
+    ;
+}
+
+.header {
+    margin-bottom: 30px;
+    color: wheat;
+}
+
+.list_btn {
+    display: flex;
+
+    gap: 10px;
+}
+
+.list li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.button {
+    width: 200px;
+    background-color: #604eb2c5;
+    color: wheat;
+    border-radius: 5px;
+}
+
+.stat {
+    display: flex;
+    color: wheat;
+    border: 2px solid purple;
+    border-radius: 6px;
+    padding: 0 10px;
+    width: 210px;
+    justify-content: space-between;
+}
+
+.wraper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px 0;
+
+    width: 300px;
+
+    background: rgba(26, 44, 246, 0.607);
+    border: 2px solid rgb(140, 25, 228);
+    border-radius: 6px;
+    box-shadow: 1em 1em 1em .1em rgba(105, 97, 94, 0.268);
+    ;
+}
