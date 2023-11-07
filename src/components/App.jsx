@@ -13,13 +13,13 @@ const App = () => {
   const [bad, setBad] = useState(0);
 
   const handleIncrm = (e) => {
-    if (e == "good") {
+    if (e === "good") {
       setGood(good + 1);
     };
-    if (e == "neutral") {
+    if (e === "neutral") {
       setNeutral(neutral + 1);
     };
-    if (e == "bad") {
+    if (e === "bad") {
       setBad(bad + 1);
     };
   };
