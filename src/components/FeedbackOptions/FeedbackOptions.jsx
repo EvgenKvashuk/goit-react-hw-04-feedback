@@ -6,6 +6,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         <div>
             <div className={css.wraper_btn}>
 
+
                 <ul className={css.list_btn}>
                     {options.map(option => (
                         <li >
